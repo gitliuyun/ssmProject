@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<body>
+<div id = "svgToPng">
+	<svg xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xmlns="http://www.w3.org/2000/svg" font-size="10px" font-family="sans-serif" fill="none" stroke="none" stroke-width="1.5" style="-webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none;" unselectable="on" width="572" height="300"><defs></defs><rect pointer-events="all" width="572" height="300" fill="rgb(127,127,127)" fill-opacity="0.00001"></rect><g><g transform="translate(3,3)"><g clip-path="url(#i2)"><clipPath id="i2"><rect x="219" y="259" width="128" height="35"></rect></clipPath><g transform="translate(219,259)"><g transform="translate(10,10)"><g><g><g><g><g><path shape-rendering="crispEdges" pointer-events="none" cursor="default" fill="rgb(31,119,180)" stroke="rgb(31,119,180)" d="M-3.872983346207417,-3.872983346207417L3.872983346207417,-3.872983346207417 3.872983346207417,3.872983346207417 -3.872983346207417,3.872983346207417Z" transform="translate(7.5,7.5) "></path></g></g></g><g><text pointer-events="all" cursor="default" x="3" dy=".35em" transform="translate(15,7.5)" fill="rgb(0,0,0)">FTTH/FTTO端口数</text></g></g></g></g></g></g></g><g transform="translate(3,3)"><g><path transform="translate(283,129.5)" d="M0,114.2625A114.2625,114.2625 0 1,1 0,-114.2625A114.2625,114.2625 0 1,1 0,114.2625Z" fill="rgb(31,119,180)" fill-rule="evenodd"></path></g><g><g><path pointer-events="none" d="M283,237.28750000000002L283,247L400.5,247L414.65,247L420.65,247" stroke="rgb(0,0,0)" stroke-width="0.5"></path></g><g><text pointer-events="none" x="3" y="-3" transform="translate(420.65,253)" fill="rgb(0,0,0)">40 (100%)</text></g></g></g></g><rect pointer-events="stroke" width="572" height="300" stroke-opacity="0"></rect></svg>
+	</div>
+</body>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<script>
+   
+	var svgXml = $('#svgToPng').html();
+
+	var image = new Image();
+	image.src = 'data:image/svg+xml;base64,' + window.btoa(unescape(encodeURIComponent(svgXml))); //给图片对象写入base64编码的svg流
+
+	var canvas = document.createElement('canvas');  //准备空画布
+	canvas.width = $('#svgToPng').width();
+	canvas.height = $('#svgToPng').height();
+
+	var context = canvas.getContext('2d');  //取得画布的2d绘图上下文
+	context.drawImage(image, 0, 0);
+
+	var a = document.createElement('a');
+	a.href = canvas.toDataURL('image/png');  //将画布内的信息导出为png图片数据
+	a.download = "MapByMathArtSys";  //设定下载名称
+	a.click(); //点击触发下载
+</script>
+
+</html>
