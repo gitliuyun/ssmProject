@@ -13,7 +13,7 @@ http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
     <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter"/>
 
     <!--  ③：对模型视图名称的解析，即在模型视图名称添加前后缀 -->
-    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" 
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
     	<property name="prefix" value="/"/>
     	<property name="suffix" value=".jsp"/>
     </bean>
